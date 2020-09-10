@@ -27,7 +27,6 @@ export const employeeData = [
         id: '5',
         name: 'hjk',
         role: 'admin',
-
     },
 
 ]
