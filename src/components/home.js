@@ -7,12 +7,36 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Button from '@material-ui/core/Button';
+import { employeeData } from '../data/employee'
 
 export default function Home() {
 
 
   return (
-    <h1>Suh.</h1>
+    <>
+    <Button variant="contained" color="secondary" style={{float: 'right'}}> + </Button>
+    
+    <TableContainer>
+      <Table aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Employee ID</TableCell>
+            <TableCell align="center">Employee Name</TableCell>
+            <TableCell align="right">Employee Role</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {employeeData.map((row) => (
+            <TableRow key={row}>
+              <TableCell>{row.id}</TableCell>
+              <TableCell align="center">{row.name}</TableCell>
+              <TableCell align="right">{row.role}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </>
   );
 }
