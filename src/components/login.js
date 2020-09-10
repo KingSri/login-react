@@ -1,11 +1,31 @@
 import React, {useState } from 'react';
 import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import { Typography } from '@material-ui/core';
+import  {Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    form: {
+      width: '100%',
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3,0,2),
+    },
+  })
+  );
+
+
+//login data-mimicking a json file
 let one = {
     username: "one",
     password: 'One123',
@@ -19,10 +39,14 @@ let three = {
     password: 'Three123',
 }
 
+
+//Main function
 export default function Login(props) {
     //useState hook instead of state/setState for username and password
     const [usernameInput, setUsernameInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
+
+    const stylingClass = useStyles();
 
     // //using history via reactrouter
     const history = useHistory();
@@ -42,8 +66,8 @@ export default function Login(props) {
         if (((usernameInput === one.username) && (passwordInput === one.password)) || ( (usernameInput === two.username) && (passwordInput === two.password)) || ((usernameInput === three.username) && (passwordInput === three.password)) ){
             history.push('/home');
         }
-        else{
-            console.log("Email or Password Invalid. Please try again later");
+        else {
+            alert("Username and/or password is incorrect. Please try again.")
         }
         //Ensures that username AND password input are equal to one of the three values listed above
 
@@ -52,12 +76,16 @@ export default function Login(props) {
         return (
              <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                <div>
+                <div className={stylingClass.paper}>
                     <Typography component="h1" variant="h5">
                         Welcome to ReleaseIQ. Please log in.
                     </Typography>
-                    <form onSubmit={handleSubmit} noValidate>
-                        <Input
+                    <form onSubmit={handleSubmit} className={stylingClass.form} noValidate>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
                             onChange={handleChangeUsername}
                             type="username"
                             id="username"
@@ -65,9 +93,14 @@ export default function Login(props) {
                             value={usernameInput}
                             placeholder = "username"
                             autoComplete= "username"
+                            autoFocus
                             />
 
-                        <Input
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
                             onChange={handleChangePassword}
                             type="password"
                             id="password"
@@ -84,6 +117,7 @@ export default function Login(props) {
                         color="primary"
                         onClick={handleSubmit}
                         disabled={!usernameInput || !passwordInput}
+                        className={stylingClass.submit}
                         >
                             Sign In
                         </Button>
@@ -92,27 +126,3 @@ export default function Login(props) {
             </Container> 
           )
     }
-
-
-
-//Notes:
-//
-
-// class Login extends Component{
-    
-//     state = {
-//         username: '',
-//         password: '',
-//     }
-//     handleChange = (event) => {
-//         this.setState({
-//             [event.target.name]: event.target.value
-//         })
-//     };
-
-//     handleSubmit = (event) => {
-//         event.preventDefault()
-//     }
-
-
-// export default (Login);
