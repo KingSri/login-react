@@ -16,7 +16,32 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid'
+import {Fab, Typography} from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add';
 
+
+const useStyles = theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+  table: {
+    minWidth: 700,
+  },
+  root: {
+      '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+      },
+    },
+    roots: {
+    width: '100%',
+    maxWidth: 500,
+  },
+
+})
 
 class Home extends Component {
   constructor(props){
@@ -61,16 +86,21 @@ class Home extends Component {
           [event.target.name]: event.target.value
       })
   }
+ 
   render(){
+    const { classes } = this.props;
       return(
           <>
            <div>
+             <Typography variant="h2" gutterBottom>EmploySri</Typography>
+
         <div>
           <Grid container alignItems="flex-start" justify="flex-end" direction="row">
-      <Button variant="contained" align="right" color="warning" onClick={this.handleClickOpen}>
-        +
-      </Button>
+      <Fab color="secondary" aria-label="add" onClick={this.handleClickOpen}>
+          <AddIcon />
+        </Fab>
       </Grid>
+      <br></br>
 
       <Dialog open={this.state.open} onClose={this.handleClose} onSubmit={this.handleSubmit} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Welcome</DialogTitle>
@@ -137,21 +167,21 @@ class Home extends Component {
       </Dialog>
     </div>
 
-    <TableContainer>
-                <Table aria-label="simple table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell align="center">Employee ID</TableCell>
-                        <TableCell align="center">Employee Name</TableCell>
-                        <TableCell align="center">Employee Role</TableCell>
+    <TableContainer component={Paper}>
+                <Table className={classes.table}>
+                    <TableHead >
+                      <TableRow className={classes.root}>
+                        <TableCell align="center" className={classes.head}>Employee ID</TableCell>
+                        <TableCell align="center" className={classes.head}>Employee Name</TableCell>
+                        <TableCell align="center" className={classes.head}>Employee Role</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {this.state.eData.map((row) => (
                         <TableRow key={row}>
-                           <TableCell align="center">{row.id}</TableCell>
-                           <TableCell align="center">{row.name}</TableCell>
-                          <TableCell align="center">{row.role}</TableCell>
+                           <TableCell align="center" className={classes.body}>{row.id}</TableCell>
+                           <TableCell align="center" className={classes.body}>{row.name}</TableCell>
+                          <TableCell align="center" className={classes.body}>{row.role}</TableCell>
                         </TableRow>
                         ))}
                       </TableBody>
@@ -177,4 +207,4 @@ class Home extends Component {
 
 }
 }
-export default Home;
+export default withStyles(useStyles)(Home);
