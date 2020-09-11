@@ -109,7 +109,7 @@ class Home extends Component {
       {/* MODAL FORM */}
 
       <Dialog open={this.state.open} onClose={this.handleClose} onSubmit={this.handleSubmit} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Welcome</DialogTitle>
+        <DialogTitle id="form-dialog-title">Welcome.</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Please Enter Relevant Employee Information Here.
