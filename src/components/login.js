@@ -46,7 +46,7 @@ export default function Login(props) {
     const [usernameInput, setUsernameInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
 
-    const stylingClass = useStyles();
+    const classes = useStyles();
 
     // //using history via reactrouter
     const history = useHistory();
@@ -74,13 +74,14 @@ export default function Login(props) {
 
     }
         return (
+            
              <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                <div className={stylingClass.paper}>
+                <div className={classes.paper}>
                     <Typography component="h1" variant="h5">
                         Welcome to ReleaseIQ. Please log in.
                     </Typography>
-                    <form onSubmit={handleSubmit} className={stylingClass.form} noValidate>
+                    <form onSubmit={handleSubmit} className={classes.form} noValidate>
                         <TextField
                             variant="outlined"
                             margin="normal"
@@ -117,7 +118,7 @@ export default function Login(props) {
                         color="primary"
                         onClick={handleSubmit}
                         disabled={!usernameInput || !passwordInput}
-                        className={stylingClass.submit}
+                        className={classes.submit}
                         >
                             Sign In
                         </Button>

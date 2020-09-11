@@ -94,7 +94,7 @@ class Home extends Component {
           {/* TITLE */}
            <div>
              <Typography variant="h2" gutterBottom>EmploySri</Typography>
-             <Typography variant="h6" gutterBottom>A table for all your employee management needs</Typography>
+             <Typography variant="h6" gutterBottom>A table for all your employee management needs.</Typography>
 
           {/* ADD BUTTON  */}
 
