@@ -15,6 +15,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Grid from '@material-ui/core/Grid'
 
 
 class Home extends Component {
@@ -65,9 +66,12 @@ class Home extends Component {
           <>
            <div>
         <div>
+          <Grid container alignItems="flex-start" justify="flex-end" direction="row">
       <Button variant="contained" align="right" color="warning" onClick={this.handleClickOpen}>
         +
       </Button>
+      </Grid>
+
       <Dialog open={this.state.open} onClose={this.handleClose} onSubmit={this.handleSubmit} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Welcome</DialogTitle>
         <DialogContent>
@@ -137,17 +141,17 @@ class Home extends Component {
                 <Table aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Employee ID</TableCell>
+                        <TableCell align="center">Employee ID</TableCell>
                         <TableCell align="center">Employee Name</TableCell>
-                        <TableCell align="right">Employee Role</TableCell>
+                        <TableCell align="center">Employee Role</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {this.state.eData.map((row) => (
                         <TableRow key={row}>
-                           <TableCell>{row.id}</TableCell>
+                           <TableCell align="center">{row.id}</TableCell>
                            <TableCell align="center">{row.name}</TableCell>
-                          <TableCell align="right">{row.role}</TableCell>
+                          <TableCell align="center">{row.role}</TableCell>
                         </TableRow>
                         ))}
                       </TableBody>
