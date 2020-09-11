@@ -91,8 +91,12 @@ class Home extends Component {
     const { classes } = this.props;
       return(
           <>
+          {/* TITLE */}
            <div>
              <Typography variant="h2" gutterBottom>EmploySri</Typography>
+             <Typography variant="h6" gutterBottom>A table for all your employee management needs</Typography>
+
+          {/* ADD BUTTON  */}
 
         <div>
           <Grid container alignItems="flex-start" justify="flex-end" direction="row">
@@ -101,6 +105,8 @@ class Home extends Component {
         </Fab>
       </Grid>
       <br></br>
+
+      {/* MODAL FORM */}
 
       <Dialog open={this.state.open} onClose={this.handleClose} onSubmit={this.handleSubmit} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Welcome</DialogTitle>
@@ -166,6 +172,7 @@ class Home extends Component {
         </DialogActions>
       </Dialog>
     </div>
+    {/* TABLE WITH DATA */}
 
     <TableContainer component={Paper}>
                 <Table className={classes.table}>
